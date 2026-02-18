@@ -1,27 +1,44 @@
 import React, { Component } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import '../../../stylings/styles.css'; // Import the CSS file
 
-export default class Sidebar extends Component {
+class Sidebar extends Component {
   render() {
-    const { visible } = this.props; // Destructure the visible prop
+    const { visible, navigate } = this.props; // Destructure the visible prop
 
     if (!visible) {
       return null; // Don't render anything if visible is false
     }
+
+    const handleLogout = () => {
+      navigate('/login');
+    };
+
     return (
       <div className='sideBar'>
          <div className="header-logo">
-          <img src="image_asoroauto.webp" alt="Logo" /> {/* Replace with your logo */}
+          <Link to="/dashboard">
+            <img src="image_asoroauto.webp" alt="Logo" /> {/* Replace with your logo */}
+          </Link>
         </div>
            <ul>
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/individuals">Individuals</a></li>
-            {/* <li><a href="/individualsRequest">Settings</a></li> */}
-            <li><a href="/messages">Messages</a></li>
-            {/* <li><a href="/support">Support</a></li> */}
+            <li><Link to="/dashboard">Dashboard</Link></li>
+            <li><Link to="/individuals">Individuals</Link></li>
+            <li><Link to="/individuals_ChatUsers">Chat Users</Link></li>
+            <li><Link to="/individualsRequest">Requests</Link></li>
+            <li><Link to="/car_diagnoses">Car Diagnoses</Link></li>
+            <li><Link to="/messages">Messages</Link></li>
+            <li><Link to="/settings">Settings</Link></li>
+            <li><Link to="/support">Support</Link></li>
           </ul>
-          <div className="logout">Logout</div>
+          <div className="logout" onClick={handleLogout}>Logout</div>
       </div>
     )
   }
+}
+
+// Create a wrapper component to use hooks
+export default function SidebarWrapper(props) {
+  const navigate = useNavigate();
+  return <Sidebar {...props} navigate={navigate} />;
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../../stylings/styles.css'; // Import your SCSS file
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import Toastify styles
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Loader from './tools/loader';
 
 const Login = () => {
@@ -109,7 +109,7 @@ const Login = () => {
             </div>
             <button type="submit">Log In</button>
           </form>
-          <span><a href="/signup">Signup</a> for an account</span>
+          <span><Link to="/signup">Signup</Link> for an account</span>
         </div>
       </div>
     </>

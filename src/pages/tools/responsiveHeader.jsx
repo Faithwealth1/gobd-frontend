@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Breadcrumb from './breadCrumb'; // Ensure you have the correct path for this import
 import '../../../stylings/styles.css'; // Import your CSS file
 import { useAppContext } from './AppContext';
@@ -43,7 +44,10 @@ class ResponsiveHeader extends Component {
   logout = async() => {
     try {
       // Mock logout for frontend only
-      window.location.href = "/login";
+      // Use navigate instead of window.location.href for React Router
+      // This will be handled in the wrapper component
+      const event = new CustomEvent('logout');
+      window.dispatchEvent(event);
     } catch (error) {
       console.error('Error during logout:', error);
     }
@@ -128,22 +132,24 @@ class ResponsiveHeader extends Component {
         {this.state.sidebarVisible && (
           <div className={`sideBar ${this.state.openUp ? 'openUp' : ''}`}>
             <div className="header-logo">
-              <img src="image_asoroauto.webp" alt="Logo" /> {/* Replace with your logo */}
+              <Link to="/dashboard">
+                <img src="image_asoroauto.webp" alt="Logo" /> {/* Replace with your logo */}
+              </Link>
             </div>
             <ul>
-              <li><a href="/dashboard">Dashboard</a></li>
-              <li className='messages'><a href="/individuals">GOBD Users</a>
+              <li><Link to="/dashboard">Dashboard</Link></li>
+              <li className='messages'><Link to="/individuals">GOBD Users</Link>
               {this.state.gobdUsers.length !==0 || null? <span>{this.state.gobdUsers.length}</span>: ""}</li>
-              <li className='messages'><a href="/individuals_ChatUsers">Site users</a>
+              <li className='messages'><Link to="/individuals_ChatUsers">Site users</Link>
              {this.state.siteUsers.length !==0 || null? <span>{this.state.siteUsers.length}</span>: ""}
              </li>
-              <li className='messages'><a href="/car_diagnoses">Car Diagnoses</a>
+              <li className='messages'><Link to="/car_diagnoses">Car Diagnoses</Link>
              {this.state.diagnoses.length !==0 || null? <span>{this.state.diagnoses.length}</span>: ""}
              </li>
-              <li className='messages'><a href="/messages">Messages</a>
+              <li className='messages'><Link to="/messages">Messages</Link>
               {this.state.unseenMessages !== 0 || null? <span>{this.state.unseenMessages}</span>: ""}
               </li>
-              {/* <li><a href="/support">Support</a></li> */}
+              {/* <li><Link to="/support">Support</Link></li> */}
             </ul>
             <div className="header-search">
               <input type="text" placeholder="Search..." />
@@ -160,6 +166,17 @@ class ResponsiveHeader extends Component {
 // Create a wrapper component to inject context and navigation
 const DashboardWithContext = () => {
   const { fetchData, data, loginStatus } = useAppContext();
+  const navigate = useNavigate();
+
+  // Handle logout event
+  React.useEffect(() => {
+    const handleLogout = () => {
+      navigate('/login');
+    };
+
+    window.addEventListener('logout', handleLogout);
+    return () => window.removeEventListener('logout', handleLogout);
+  }, [navigate]);
 
   return <ResponsiveHeader fetchData={fetchData} data={data} loginStatus={loginStatus} />;
 };
