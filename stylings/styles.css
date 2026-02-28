@@ -148,13 +148,32 @@ body {
   display: none;
 }
 .sideBar .header-logo {
-  background: rgb(6, 6, 124);
+  background: rgb(27, 27, 75);
   width: 100%;
   height: 3em;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 4.5em;
+}
+.sideBar .header-logo a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+.sideBar .header-logo img {
+  max-width: 40%;
+  max-height: 40%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+@media (max-width: 768px) {
+  .sideBar .header-logo img {
+    max-width: 45%;
+    max-height: 45%;
+  }
 }
 .sideBar .header-search {
   width: 100%;
@@ -477,6 +496,7 @@ body {
   height: 2.5em;
   border-radius: 50%;
   border: 1px solid rgb(0, 0, 0);
+  object-fit: cover;
 }
 .container .containerMessages .messageSection .messageList .details .indiv .other .name {
   font-weight: bold;
@@ -659,6 +679,7 @@ body {
   border-radius: 50%;
   padding: 3px;
   border: 1px solid rgba(0, 0, 0, 0.521);
+  object-fit: cover;
 }
 .container .containerMessages .messageSection .chatDetails .userIntro .name {
   font-weight: bold;
@@ -907,10 +928,10 @@ body {
   font-family: sans-serif;
   font-size: 12px;
   background: rgba(42, 0, 231, 0.137);
-  background: url(../public/image_asoroauto.webp), rgb(255, 255, 255);
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/LOGO.png), rgb(255, 255, 255);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 20%;
+  background-size: contain;
+  background-position: center;
 }
 .signup-container .inner {
   width: 30%;
@@ -924,6 +945,12 @@ body {
 @media (max-width: 768px) {
   .signup-container .inner {
     min-width: 23em;
+  }
+}
+@media (max-width: 480px) {
+  .signup-container .inner {
+    width: 90%;
+    min-width: unset;
   }
 }
 .signup-container h2 {
@@ -940,9 +967,16 @@ body {
 .signup-container .form-group input {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #ffffff;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.685);
+  background: #ffffff;
+}
+.signup-container .form-group input:focus,
+.signup-container .form-group input:focus-visible {
+  outline: none;
+  border-color: #ffffff;
+  box-shadow: none;
+  background: #ffffff;
 }
 .signup-container button {
   width: 100%;
@@ -974,10 +1008,10 @@ body {
   font-family: sans-serif;
   font-size: 14px;
   background: rgba(42, 0, 231, 0.137);
-  background: url(../public/image_asoroauto.webp), rgb(255, 255, 255);
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/LOGO.png), rgb(255, 255, 255);
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 20%;
+  background-size: contain;
+  background-position: center;
 }
 .login-container .inner {
   width: 30%;
@@ -991,6 +1025,12 @@ body {
 @media (max-width: 768px) {
   .login-container .inner {
     min-width: 23em;
+  }
+}
+@media (max-width: 480px) {
+  .login-container .inner {
+    width: 90%;
+    min-width: unset;
   }
 }
 .login-container h2 {
@@ -1007,21 +1047,81 @@ body {
 .login-container .form-group input {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #ffffff;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.685);
+  background: #ffffff;
+}
+.login-container .form-group input:focus,
+.login-container .form-group input:focus-visible {
+  outline: none;
+  border-color: #ffffff;
+  box-shadow: none;
+  background: #ffffff;
 }
 .login-container button {
   width: 100%;
   padding: 10px;
-  background-color: rgba(0, 0, 255, 0.397);
+  background-color: rgb(6, 6, 124);
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 .login-container button:hover {
-  background-color: rgba(0, 0, 139, 0.582);
+  background-color: rgb(6, 6, 124);
+}
+.login-container .inner > span {
+  display: block;
+  margin-top: 12px;
+}
+.login-container .inner > span a {
+  color: rgb(6, 6, 124);
+  text-decoration: none;
+}
+.login-container .inner > span a:hover {
+  text-decoration: underline;
+}
+
+/* Autofill styles */
+.login-container input:-webkit-autofill,
+.login-container input:-webkit-autofill:hover,
+.login-container input:-webkit-autofill:focus,
+.login-container input:-webkit-autofill:active,
+.login-container textarea:-webkit-autofill,
+.login-container textarea:-webkit-autofill:hover,
+.login-container textarea:-webkit-autofill:focus,
+.login-container textarea:-webkit-autofill:active,
+.login-container select:-webkit-autofill,
+.login-container select:-webkit-autofill:hover,
+.login-container select:-webkit-autofill:focus,
+.login-container select:-webkit-autofill:active,
+.signup-container input:-webkit-autofill,
+.signup-container input:-webkit-autofill:hover,
+.signup-container input:-webkit-autofill:focus,
+.signup-container input:-webkit-autofill:active,
+.signup-container textarea:-webkit-autofill,
+.signup-container textarea:-webkit-autofill:hover,
+.signup-container textarea:-webkit-autofill:focus,
+.signup-container textarea:-webkit-autofill:active,
+.signup-container select:-webkit-autofill,
+.signup-container select:-webkit-autofill:hover,
+.signup-container select:-webkit-autofill:focus,
+.signup-container select:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  -webkit-text-fill-color: inherit;
+  border: 1px solid #ffffff !important;
+  caret-color: inherit;
+}
+.login-container input:-moz-autofill,
+.login-container textarea:-moz-autofill,
+.login-container select:-moz-autofill,
+.signup-container input:-moz-autofill,
+.signup-container textarea:-moz-autofill,
+.signup-container select:-moz-autofill {
+  box-shadow: 0 0 0 1000px #ffffff inset;
+  -moz-text-fill-color: inherit;
+  border: 1px solid #ffffff !important;
+  caret-color: inherit;
 }
 .login-container .error {
   color: red;

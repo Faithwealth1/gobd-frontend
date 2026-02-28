@@ -133,7 +133,7 @@ class ResponsiveHeader extends Component {
           <div className={`sideBar ${this.state.openUp ? 'openUp' : ''}`}>
             <div className="header-logo">
               <Link to="/dashboard">
-                <img src="image_asoroauto.webp" alt="Logo" /> {/* Replace with your logo */}
+                <img src="/LOGO.png" alt="Logo" />
               </Link>
             </div>
             <ul>

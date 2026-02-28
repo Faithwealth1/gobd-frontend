@@ -355,7 +355,7 @@ files.forEach((file, i) => {
                 {messages.map((item, i) => (
                   <div className="indiv" onClick={() => handleClick(item[0].myId === "admin" ? item[0].otherId : item[0].myId)} key={i}>
                     <div className="image">
-                      <img src="image_asoroauto.webp" alt="" />
+                      <img src="/LOGO.png" alt="" />
                     </div>
                     <div className="other">
                       <div className="name">{customers[i]?.username}</div>
@@ -441,7 +441,7 @@ files.forEach((file, i) => {
             </div>
             <div className="chatDetails">
               <div className="userIntro">
-                <div className="img"> <img src="image_asoroauto.webp" alt="" /></div>
+                <div className="img"> <img src="/LOGO.png" alt="" /></div>
                 <div className="name">{currCustomer?.username}</div>
                 <div className="role">User</div>
                 <div className="number">{currCustomer?.phone}</div>
